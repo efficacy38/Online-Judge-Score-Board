@@ -1,0 +1,4 @@
+[
+    { "name": "Dashboard", "path": "/" },
+    { "_comment": { "name": "查詢解題記錄", "path": "/id_query" } }
+]
