@@ -1,5 +1,5 @@
 const cols = [
-  { field: "quest_name", headerName: "題目名稱", width: 150 },
+  { field: "quest_name", headerName: "題目名稱", width: 300 },
   {
     field: "run_time",
     headerName: "執行時間",
@@ -13,18 +13,18 @@ const cols = [
     align: "right",
   },
   {
-    field: "judge",
+    field: "platform",
     headerName: "OJ 名稱",
     width: 200,
     align: "right",
   },
   {
-    field: "submit_dt",
+    field: "submit_time",
     headerName: "submit 時間",
     width: 150,
     align: "right",
     valueFormatter: (params) => {
-      let m = new Date(params.row.submit_dt);
+      let m = new Date(params.row.submit_time);
       const dateString =
         m.getUTCFullYear() +
         "/" +

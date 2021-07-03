@@ -1,6 +1,6 @@
 import axios from "axios";
 const serverURL = "";
-const localURL = "http://localhost:8080";
+const localURL = "http://192.168.0.100:8080/";
 
 const userRequest = axios.create({
   baseURL: `${localURL}`,
@@ -33,11 +33,11 @@ const updateDataBase = () => {
 
 const create_user = (data) => {
   console.log(data)
-  return userRequest.post("/user", { data: makeFd(data) });
+  return userRequest.post("/user", makeFd(data));
 };
 
 const get_profile = (uid) => {
-  return userRequest.get(`/user/${uid}`);
+  return userRequest.get(`/get_user_quest/${uid}`);
 };
 
 export { create_user, updateDataBase, get_all_user_data, get_profile, localURL, serverURL };

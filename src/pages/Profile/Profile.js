@@ -17,27 +17,34 @@ const useStyles = makeStyles((theme) => ({
 function Profile() {
   const location = useLocation();
   const classes = useStyles();
-  const [userProfile, setUserProfile] = useState({});
+  const [userProfile, setUserProfile] = useState(null);
   const [isLoadingData, setIsLoadingData] = useState(false);
   console.log(location);
   useEffect(async () => {
     setIsLoadingData(true);
     const query = new URLSearchParams(location.search);
-    console.log(query.get("uid"));
     await get_profile(!!query.get("uid") ? query.get("uid") : 0)
-      .then((data) => data.data[0])
+      .then((data) => data.data)
+      .then((data) =>
+        data.map((data) => {
+          data.id = data.qid;
+          return data;
+        })
+      )
       .then((data) => {
+        console.log(data);
         setUserProfile(data);
       });
+
     setIsLoadingData(false);
   }, [location.search]);
 
   return !!userProfile ? (
     <Container styles={{ height: "100%" }} className={classes.root}>
-      <Typography variant="h5">{`${userProfile.name} 近期解題紀錄`}</Typography>
+      <Typography variant="h5">{`${userProfile[0].submitter} 近期解題紀錄`}</Typography>
       <Paper>
         <DataTable
-          rows={userProfile.quests}
+          rows={userProfile}
           cols={cols}
           isLoadingData={isLoadingData}
         />

@@ -31,8 +31,8 @@ export default function NodeCard({user}) {
   return (
     <Card>
       <CardHeader 
-      avatar={<Avatar>{user.name[0].toUpperCase()}</Avatar>}
-      title={user.name}
+      avatar={<Avatar>{user.user_name[0].toUpperCase()}</Avatar>}
+      title={user.user_name}
       subheader={`UID: ${user.uid}`}
       />
       <CardContent>

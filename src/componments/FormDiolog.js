@@ -21,7 +21,7 @@ export default function FormDialog() {
   };
 
   const handleCreateUser = () => {
-    create_user({uid: userId});
+    create_user({ ac: 0, total: 0, uid: userId, user_name: userId });
   };
 
   return (
@@ -47,7 +47,9 @@ export default function FormDialog() {
             type="text"
             fullWidth
             value={userId}
-            onChange={(e) => {setUserId(e.currentTarget.value)}}
+            onChange={(e) => {
+              setUserId(e.currentTarget.value);
+            }}
           />
         </DialogContent>
         <DialogActions>
